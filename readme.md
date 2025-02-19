@@ -4,7 +4,7 @@
   <img src="deepai_org_machine-learning-model_surreal-graphics-generator.png" />
 </p>
 
-## Welcome to ParcelScript! 
+## Welcome to Parcel Script! 
 
 This software will generate form letters (an advanced “mail merge”) allowing you to request sets of information using paper letters with tracking numbers. It is intended for professionals and advocates in the United States to use to request information from government offices in the United States and in support of discovery in court cases on behalf of applicants. When tactfully used, form letters can be a powerful tool to shine a light on injustice or an unaddressed need in society.
 
