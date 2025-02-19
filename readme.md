@@ -1,10 +1,12 @@
-# Welcome to Parcel Script!
+
 
 <p align="center">
   <img src="deepai_org_machine-learning-model_surreal-graphics-generator.png" />
 </p>
 
-Welcome to ParcelScript! This software will generate form letters (an advanced “mail merge”) allowing you to request sets of information using paper letters with tracking numbers. It is intended for professionals and advocates in the United States to use to request information from government offices in the United States and in support of discovery in court cases. When tactfully used, form letters can be a powerful tool to shine a light on injustice or an unaddressed need in society.
+## Welcome to ParcelScript! 
+
+This software will generate form letters (an advanced “mail merge”) allowing you to request sets of information using paper letters with tracking numbers. It is intended for professionals and advocates in the United States to use to request information from government offices in the United States and in support of discovery in court cases on behalf of applicants. When tactfully used, form letters can be a powerful tool to shine a light on injustice or an unaddressed need in society.
 
 
 ## Version: 1.0 (Blackbird)
@@ -211,7 +213,7 @@ Templates are managed in a dedicated interface accessible from the menu by click
 
 ### Parcel Script Markup Language (Parcel Script)
 
-The program will load and populate a template each time it generates a letter. There are tags in the template which correspond to different pieces of information in the database, such as the Applicant's Preferred Name or the Responder's Mailing Address. When you select a tag from the tag list in the editor, it is automatically copied to your clipboard. You can then paste it into the Template Editor and hit Preview to see what it looks like. When you use the template to generate letters, the software will replace the tags with the corresponding piece of information and then generate a .pdf file.
+The program will load and populate a template each time it generates a letter. There are tags in the template which correspond to different pieces of information in the database, such as the Applicant's Preferred Name or the Responder's Mailing Address. When you select a tag from the tag list in the editor, it is automatically copied to your clipboard. You can then paste it into the Template Editor and hit Preview to see what it looks like. The preview should pop up as a pdf. When you use the template to generate letters, the software will replace the tags with the corresponding piece of information and then generate a .pdf file.
 
 
 
