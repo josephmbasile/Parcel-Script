@@ -377,6 +377,7 @@ year_sent_layout = [
 ]
 
 dashboard_column_layout = [
+    #[sg.Image(source="logo.png", subsample=3, size=(230,100))], #Try this again later
     [sg.Frame("",layout=total_squestered_layout, background_color=overview_information_color)],
     [sg.Frame("",layout=today_received_layout, background_color=overview_information_color)],
     [sg.Frame("",layout=today_sent_layout, background_color=overview_information_color)],
@@ -1851,10 +1852,7 @@ def generate_application(window,values,template_id):
     documents_string = f"{parcel_session.this_application['Documents']}".replace("'","~")
     requests_string = f"{parcel_session.this_application['Requests']}".replace("'","~")
 
-    #Add the application to the database
-    insert_application_query = f"""INSERT INTO tbl_Applications (Tracking_Number, Requester_ID, Responder_ID, Applicant_ID, Letter_IDs, Documents, Requests, Notes, Record_Location, Created_Time, Edited_Time, Date)
-    VALUES ('{parcel_session.this_application['Tracking_Number']}','{parcel_session.this_letter['Requester_ID']}', '{parcel_session.this_letter['Responder_ID']}','{parcel_session.this_application['Applicant_ID']}','{parcel_session.organization_acronym}-LTR-{int(first_letter)+10000} thru {parcel_session.organization_acronym}-LTR-{int(last_letter)+10000}','{documents_string}','{requests_string}','{parcel_session.this_application['Notes']}','{filepath}','{datetime.datetime.now()}','{datetime.datetime.now()}','{current_date_db}');"""
-   #print(insert_application_query)
+
 
 
     #Call the pdf
@@ -1870,7 +1868,12 @@ def generate_application(window,values,template_id):
     event_opendb, values_opendb = new_database_window.read(close=True)
     values.update(values_opendb)
     if event_opendb == f"-Save_{parcel_session.num}-": 
-        #To be moved to a new function
+        
+        #Add the application to the database
+        insert_application_query = f"""INSERT INTO tbl_Applications (Tracking_Number, Requester_ID, Responder_ID, Applicant_ID, Letter_IDs, Documents, Requests, Notes, Record_Location, Created_Time, Edited_Time, Date)
+        VALUES ('{parcel_session.this_application['Tracking_Number']}','{parcel_session.this_letter['Requester_ID']}', '{parcel_session.this_letter['Responder_ID']}','{parcel_session.this_application['Applicant_ID']}','{parcel_session.organization_acronym}-LTR-{int(first_letter)+10000} thru {parcel_session.organization_acronym}-LTR-{int(last_letter)+10000}','{documents_string}','{requests_string}','{parcel_session.this_application['Notes']}','{filepath}','{datetime.datetime.now()}','{datetime.datetime.now()}','{current_date_db}');"""
+        #print(insert_application_query)
+
         inserted_application = db.execute_query(parcel_session.connection,insert_application_query)
         parcel_session.console_log(f"Inserted {parcel_session.this_application['Tracking_Number']}: {inserted_application}")
         #TOBE MOVED TO NEW FUNCTION
@@ -1886,7 +1889,10 @@ def generate_application(window,values,template_id):
             inserted_letter = db.execute_query(parcel_session.connection,insert_letter_query)
             parcel_session.console_log(f"Inserted {insert_letter['letter']}: {inserted_letter}")      
             parcel_session.new_letters = []      
-    return filepath
+        return filepath
+    else:
+        parcel_session.new_letters = []
+
 
 def add_common_request_to_input(window,values):
    #print(values['-Application_Common_Requests_Input-'])
